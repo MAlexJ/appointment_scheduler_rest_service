@@ -1,5 +1,5 @@
-readme.md
 .env
+amplicode.xml
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
