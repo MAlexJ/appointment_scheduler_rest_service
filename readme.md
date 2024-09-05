@@ -5,6 +5,8 @@
 * Java 21
 * Springboot 3.3.3
 * Gradle 8.10
+* render.com webservice
+* UptimeRobot webservice monitoring
 
 ### Project configuration
 
@@ -13,6 +15,22 @@
 ```
 xxxx-xxx-xxx
 ```
+
+### API documentation
+
+Project uses OpenAPI (link: https://springdoc.org/)
+
+Configuration api documentation endpoint in *.yaml file
+
+```
+springdoc:
+  swagger-ui:
+    path: /api/documentation
+```
+
+API documentation endpoint:  <br>
+
+* http://{URL}:{port}/api/documentation
 
 ### Java code style
 

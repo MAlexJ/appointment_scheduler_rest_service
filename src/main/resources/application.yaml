@@ -9,7 +9,14 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+logging:
+  level:
+    root: ${APP_SERVICE_ROOT_LOG_LEVEL:INFO}
+    org.springframework: ${APP_SERVICE_SPRING_LOG_LEVEL:INFO}
+
 server:
+  port: ${APP_SERVICE_PORT:8080}
+
   error:
     #
     # 1. with an always value;
@@ -21,3 +28,14 @@ server:
     # we can use this property with an always value to enable it
     #
     include-message: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+
+springdoc:
+  swagger-ui:
+    path: /api/documentation
