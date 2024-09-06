@@ -85,7 +85,7 @@ public class EventRestController {
 
     @PutMapping
     public ResponseEntity<String> put(@RequestBody String request) {
-        log.info("Received request for put: {}", request);
+        log.info("Http: update event: {}", request);
         return ResponseEntity.notFound().build();
     }
 }
