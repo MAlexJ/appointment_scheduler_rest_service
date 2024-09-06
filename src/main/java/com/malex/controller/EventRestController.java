@@ -1,5 +1,6 @@
 package com.malex.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+@CrossOrigin
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/events")
@@ -29,27 +31,34 @@ public class EventRestController {
 
     private final EventService service;
 
-    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<EventResponse>> findAllEventsByCriteria() {
-        log.info("Received request for findAllEvents");
-        return ResponseEntity.notFound().build();
+        log.trace("Http: find all events by criteria");
+        return ResponseEntity.ok(service.findAll());
     }
 
-
-    @CrossOrigin
     @PostMapping
     public ResponseEntity<EventResponse> createEvent(@RequestBody EventRequest request) {
-        log.info("Received request for createEvent: {}", request);
-        return ResponseEntity.notFound().build();
+        log.trace("Http: create new event - {}", request);
+        return ResponseEntity.ok(service.create(request));
     }
 
-
-    @CrossOrigin
-    @PutMapping
-    public ResponseEntity<String> put(@RequestBody String request) {
-        log.info("Received request for put: {}", request);
-        return ResponseEntity.notFound().build();
+    /*
+     * 4.7. Remove a device or configuration
+     * link: https://restfulapi.net/rest-api-design-tutorial-with-example/
+     *
+     * 1. async operation
+     *  A successful response SHOULD be 202 (Accepted) if the resource has been queued for deletion (async operation),
+     *
+     * 2. sync operation
+     *  or 200 (OK) / 204 (No Content) if the resource has been deleted permanently (sync operation).
+     *
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        log.trace("Http: delete event by id: {}", id);
+        service.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     /*
@@ -67,18 +76,16 @@ public class EventRestController {
      *  end - new event end date
      * }
      */
-    @CrossOrigin
     @PatchMapping("/{id}")
-    public ResponseEntity<EventResponse> partialUpdate(@PathVariable int id,
+    public ResponseEntity<EventResponse> partialUpdate(@PathVariable Long id,
                                                        @RequestBody EventPartialUpdateRequest request) {
-        log.info("Received request for patch by id: {}, body: {}", id, request);
-        return ResponseEntity.notFound().build();
+        log.trace("Http: partial event update by id: {}, request: {}", id, request);
+        return ResponseEntity.ok(service.partialUpdate(id, request));
     }
 
-    @CrossOrigin
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable int id) {
-        log.info("Delete event by id: {}", id);
+    @PutMapping
+    public ResponseEntity<String> put(@RequestBody String request) {
+        log.info("Received request for put: {}", request);
         return ResponseEntity.notFound().build();
     }
 }
