@@ -1,4 +1,17 @@
 package com.malex.model.entity;
 
-public record ClientEntity(Long id, String firstName, String lastName, String phoneNumber, String info) {
+import lombok.Data;
+
+@Data
+public class ClientEntity {
+
+    private Long id;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String phoneNumber;
+
+    private String info;
 }

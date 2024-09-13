@@ -1,6 +1,18 @@
 package com.malex.model.entity;
 
 import java.time.LocalDateTime;
+import lombok.Data;
 
-public record EventEntity(Long id, String text, Long clientId, LocalDateTime start, LocalDateTime end) {
+@Data
+public class EventEntity {
+
+    private Long id;
+
+    private String text;
+
+    private Long clientId;
+
+    private LocalDateTime start;
+
+    private LocalDateTime end;
 }

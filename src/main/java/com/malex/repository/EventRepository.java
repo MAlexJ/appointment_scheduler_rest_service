@@ -47,17 +47,19 @@ public class EventRepository {
     }
 
     public Optional<EventEntity> findById(Long id) {
-        return entities.stream().filter(entity -> entity.id().equals(id)).findFirst();
+        return entities.stream().filter(entity -> entity.getId().equals(id)).findFirst();
     }
 
 
     private EventEntity generateId(EventEntity entity) {
-        return new EventEntity(idGenerator.incrementAndGet(), entity.text(), entity.clientId(), entity.start(),
-                entity.end());
+        entity.setId(idGenerator.incrementAndGet());
+        return entity;
     }
 
     private EventEntity updateEntityTime(EventEntity entity, LocalDateTime start, LocalDateTime end) {
-        return new EventEntity(entity.id(), entity.text(), entity.clientId(), start, end);
+        entity.setStart(start);
+        entity.setEnd(end);
+        return entity;
     }
 
 }

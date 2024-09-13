@@ -29,7 +29,7 @@ public class ClientRepository {
 
 
     private ClientEntity generateId(ClientEntity entity) {
-        return new ClientEntity(idGenerator.incrementAndGet(), entity.firstName(), entity.lastName(),
-                entity.phoneNumber(), entity.info());
+        entity.setId(idGenerator.incrementAndGet());
+        return entity;
     }
 }
