@@ -52,11 +52,12 @@ public class EventRepository {
 
 
     private EventEntity generateId(EventEntity entity) {
-        return new EventEntity(idGenerator.incrementAndGet(), entity.text(), entity.start(), entity.end());
+        return new EventEntity(idGenerator.incrementAndGet(), entity.text(), entity.clientId(), entity.start(),
+                entity.end());
     }
 
     private EventEntity updateEntityTime(EventEntity entity, LocalDateTime start, LocalDateTime end) {
-        return new EventEntity(entity.id(), entity.text(), start, end);
+        return new EventEntity(entity.id(), entity.text(), entity.clientId(), start, end);
     }
 
 }
