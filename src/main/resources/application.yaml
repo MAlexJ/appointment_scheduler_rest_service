@@ -1,6 +1,6 @@
 spring:
   application:
-    name: appointment_scheduler_rest_service
+    name: ${APP_SERVICE_NAME:appointment_scheduler_rest_service}
 
   threads:
     virtual:

@@ -13,7 +13,11 @@
 ###### Add properties to `.env` file:
 
 ```
-xxxx-xxx-xxx
+APP_SERVICE_PORT=8080
+APP_SERVICE_NAME=appointment_scheduler_rest_service
+
+APP_SERVICE_ROOT_LOG_LEVEL=TRACE
+APP_SERVICE_SPRING_LOG_LEVEL=TRACE
 ```
 
 ### API documentation
