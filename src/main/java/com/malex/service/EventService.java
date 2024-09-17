@@ -6,7 +6,7 @@ import com.malex.mapper.ObjectMapper;
 import com.malex.model.request.EventPartialUpdateRequest;
 import com.malex.model.request.EventRequest;
 import com.malex.model.response.EventResponse;
-import com.malex.repository.EventRepository;
+import com.malex.repository.EventRepositoryStub;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -17,25 +17,25 @@ public class EventService {
 
     private final ObjectMapper mapper;
 
-    private final EventRepository eventRepository;
+    private final EventRepositoryStub eventRepositoryStub;
 
 
     public List<EventResponse> findAll() {
-        return eventRepository.findAll().stream().map(mapper::entityToResponse).toList();
+        return eventRepositoryStub.findAll().stream().map(mapper::entityToResponse).toList();
     }
 
     public EventResponse create(EventRequest request) {
         var entity = mapper.requestToEntity(request);
-        var persistEntity = eventRepository.save(entity);
+        var persistEntity = eventRepositoryStub.save(entity);
         return mapper.entityToResponse(persistEntity);
     }
 
     public void deleteById(Long id) {
-        eventRepository.deleteById(id);
+        eventRepositoryStub.deleteById(id);
     }
 
     public EventResponse partialUpdate(Long id, EventPartialUpdateRequest request) {
-        var eventEntity = eventRepository.partialUpdateById(id, request.start(), request.end());
+        var eventEntity = eventRepositoryStub.partialUpdateById(id, request.start(), request.end());
         return mapper.entityToResponse(eventEntity);
     }
 }

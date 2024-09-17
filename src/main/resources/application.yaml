@@ -9,6 +9,36 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    generate-ddl: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+    open-in-view: false
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:client_events_db}
+    username: ${APP_SERVICE_MYSQL_USERNAME}
+    password: ${APP_SERVICE_MYSQL_PASSWORD}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+      minimum-idle: 2
+      max-lifetime: 1800000
+
+  flyway:
+    locations: classpath:db/mysql/migration
+    url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:client_events_db}?createDatabaseIfNotExist=true
+    user: ${APP_SERVICE_MYSQL_USERNAME}
+    password: ${APP_SERVICE_MYSQL_PASSWORD}
+    validate-on-migrate: true
+
 logging:
   level:
     root: ${APP_SERVICE_ROOT_LOG_LEVEL:INFO}

@@ -13,11 +13,17 @@
 ###### Add properties to `.env` file:
 
 ```
-APP_SERVICE_PORT=8080
+PORT=8080
 APP_SERVICE_NAME=appointment_scheduler_rest_service
 
 APP_SERVICE_ROOT_LOG_LEVEL=TRACE
 APP_SERVICE_SPRING_LOG_LEVEL=TRACE
+
+APP_SERVICE_MYSQL_URL=....mysql....
+APP_SERVICE_MYSQL_PORT=.....
+APP_SERVICE_MYSQL_DATABASE=client_events_db
+APP_SERVICE_MYSQL_USERNAME=......
+APP_SERVICE_MYSQL_PASSWORD=..........
 ```
 
 ### API documentation
@@ -73,6 +79,16 @@ git add .
 git commit -m "Changing permission of gradlew"
 git push
 ```
+
+### Spring boot
+
+#### Hikari pool
+
+Configuring a Hikari Connection Pool with Spring Boot
+
+link: https://www.baeldung.com/spring-boot-hikari
+
+link: https://medium.com/@mukitulislamratul/maximizing-hikaricp-performance-in-spring-boot-applications-f7ee8474410a
 
 ### Render
 

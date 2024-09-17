@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class EventRepository {
+public class EventRepositoryStub {
 
     private final AtomicLong idGenerator = new AtomicLong();
 
