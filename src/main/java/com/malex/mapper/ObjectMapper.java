@@ -17,6 +17,7 @@ import com.malex.model.response.EventResponse;
 public interface ObjectMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "client", ignore = true)
     EventEntity requestToEntity(EventRequest request);
 
     @Mapping(target = "id", ignore = true)
