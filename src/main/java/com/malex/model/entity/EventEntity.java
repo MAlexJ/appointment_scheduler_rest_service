@@ -27,11 +27,11 @@ public class EventEntity {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = ClientEntity.class, fetch = FetchType.LAZY)
     private ClientEntity client;
 
-    @Transient
+    @Column(name = "client_id")
     private Long clientId;
 
     @Column(name = "start")

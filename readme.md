@@ -90,6 +90,31 @@ link: https://www.baeldung.com/spring-boot-hikari
 
 link: https://medium.com/@mukitulislamratul/maximizing-hikaricp-performance-in-spring-boot-applications-f7ee8474410a
 
+#### Spring Data JPA
+
+Spring Boot JPA (Java Persistence API) is a powerful framework that simplifies the development of Java applications 
+that interact with relational databases.
+
+link: https://springjava.com/spring-data-jpa/
+
+
+### MySQL
+
+#### SQL statements
+
+Table of Contents
+
+* Data Definition Statements
+* Data Manipulation Statements
+* Transactional and Locking Statements
+* Replication Statements
+* Prepared Statements
+* Compound Statement Syntax
+* Database Administration Statements
+* Utility Statements
+
+link: https://dev.mysql.com/doc/refman/8.4/en/sql-statements.html
+
 ### Render
 
 #### configuration: server port
