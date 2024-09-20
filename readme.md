@@ -92,11 +92,22 @@ link: https://medium.com/@mukitulislamratul/maximizing-hikaricp-performance-in-s
 
 #### Spring Data JPA
 
-Spring Boot JPA (Java Persistence API) is a powerful framework that simplifies the development of Java applications 
+Spring Boot JPA (Java Persistence API) is a powerful framework that simplifies the development of Java applications
 that interact with relational databases.
 
 link: https://springjava.com/spring-data-jpa/
 
+#### JPA
+
+Issue JPA in PetClinic (Amplicode): https://youtu.be/efhh31qKTCk?t=1747
+
+```
+spring.jpa.properties.hibernate.default_batch_fetch_size=50
+```
+
+default_batch_fetch_size recommended values
+
+link: https://stackoverflow.com/questions/21162172/default-batch-fetch-size-recommended-values
 
 ### MySQL
 

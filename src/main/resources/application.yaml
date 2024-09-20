@@ -1,4 +1,8 @@
 spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
   application:
     name: ${APP_SERVICE_NAME:appointment_scheduler_rest_service}
 
@@ -16,9 +20,11 @@ spring:
     generate-ddl: false
     properties:
       hibernate:
-        format_sql: false
+        format_sql: true
         use_sql_comments: false
+        default_batch_fetch_size: 50
     open-in-view: false
+    defer-datasource-initialization: true
 
 
   datasource:
@@ -33,11 +39,13 @@ spring:
       max-lifetime: 1800000
 
   flyway:
-    locations: classpath:db/mysql/migration
+    locations: classpath:/db/mysql/migration
     url: jdbc:mysql://${APP_SERVICE_MYSQL_URL}:${APP_SERVICE_MYSQL_PORT}/${APP_SERVICE_MYSQL_DATABASE:client_events_db}?createDatabaseIfNotExist=true
     user: ${APP_SERVICE_MYSQL_USERNAME}
     password: ${APP_SERVICE_MYSQL_PASSWORD}
     validate-on-migrate: true
+    baseline-on-migrate: true
+    baseline-version: 0
 
 logging:
   level:
