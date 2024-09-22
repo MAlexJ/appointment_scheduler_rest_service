@@ -1,3 +1,6 @@
+application:
+  version: @appVersion@
+
 spring:
   data:
     jpa:
