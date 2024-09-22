@@ -6,7 +6,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 
 USER root
-RUN chown -R gradle /home/gradle/src
+RUN chown -R gradle /home/gradle
 USER gradle
 
 RUN gradle build -x test
