@@ -1,5 +1,5 @@
 application:
-  version: @appVersion@
+  version: ${APP_SERVICE_Version:@appVersion@}
 
 spring:
   data:
@@ -59,13 +59,13 @@ server:
 
   error:
     #
-    # 1. with an always value;
+    # 1. with a value;
     # includes the stacktrace in both the HTML and the JSON default response
     #
     include-stacktrace: always
     #
     # 2. Spring Boot hides the message field in the response to avoid leaking sensitive information;
-    # we can use this property with an always value to enable it
+    # we can use this property with a value to enable it
     #
     include-message: always
 
