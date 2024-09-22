@@ -18,7 +18,7 @@ plugins {
     id 'org.springframework.boot' version "${springBootVersion}"
     id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
     id "com.github.ben-manes.versions" version "${benManesDependencyVersion}"
-    id "com.palantir.git-version" version "3.1.0"
+    id "com.palantir.git-version" version "${gitVersion}"
 }
 
 group = 'com.malex'
@@ -65,7 +65,7 @@ tasks.named('test') {
 }
 
 processResources {
-    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
+//    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
 }
 
 tasks.register('showVersion') {
