@@ -65,7 +65,7 @@ tasks.named('test') {
 }
 
 processResources {
-//    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
+    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
 }
 
 tasks.register('showVersion') {
