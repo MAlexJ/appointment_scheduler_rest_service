@@ -7,7 +7,7 @@ WORKDIR /home/gradle/src
 
 USER root
 RUN chown -R gradle /home/gradle
-RUN chmod 777 /app
+RUN chmod 777 /home
 USER gradle
 
 RUN gradle build -x test
