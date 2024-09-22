@@ -65,11 +65,19 @@ tasks.named('test') {
 }
 
 processResources {
-    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
+    def gitFolder = new File('.git')
+    if (!gitFolder.exists()) {
+        return
+    }
+    filter(ReplaceTokens, tokens: [appVersion: gitVersion()])
 }
 
 tasks.register('showVersion') {
     doLast {
+        def gitFolder = new File('.git')
+        if (!gitFolder.exists()) {
+            return
+        }
         println "\nCurrent version: ${gitVersion()}\n"
 
         def details = versionDetails()

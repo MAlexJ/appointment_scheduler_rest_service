@@ -4,13 +4,6 @@
 FROM gradle:8.10.0-jdk21-alpine AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-
-USER root
-RUN chown -R gradle /home/gradle
-RUN apt-get update && apt-get install -y git
-RUN chmod 777 /home
-USER gradle
-
 RUN gradle build -x test
 
 LABEL org.name="malex"
