@@ -82,4 +82,4 @@ springdoc:
 
 tests:
   performance:
-    endpoint: ${APP_SERVICE_TEST_ENDPOINT:/loaderio-test}
+    endpoint: ${APP_SERVICE_TEST_ENDPOINT:loader-io-test-files}

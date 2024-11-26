@@ -26,6 +26,17 @@ Content-Type: application/json
   "end": "2024-01-01T23:59:59"
 }
 
+### find all clients
+GET http://localhost:8080/api/v1/clients
 
-### Test filter for performance testing
-GET http://127.0.0.1:8080/loaderio-test
+### Test filter / for performance testing
+GET http://127.0.0.1:8080/loader-io-test-files/
+
+### Test filter txt for performance testing
+GET http://127.0.0.1:8080/loader-io-test-files.txt
+
+### Test filter html for performance testing
+GET http://127.0.0.1:8080/loader-io-test-files.html
+
+### Files
+GET http://localhost:8080/api/v1/files
