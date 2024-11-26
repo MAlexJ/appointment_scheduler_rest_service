@@ -79,3 +79,7 @@ management:
 springdoc:
   swagger-ui:
     path: /api/documentation
+
+tests:
+  performance:
+    endpoint: ${APP_SERVICE_TEST_ENDPOINT:/loaderio-test}
