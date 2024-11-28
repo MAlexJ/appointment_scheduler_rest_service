@@ -1,10 +1,10 @@
 ### Appointment scheduler app
 
-### Project setup
+#### Project setup
 
-* Java 21
-* Springboot 3.3.3
-* Gradle 8.10
+* Java 23
+* Springboot 3.4.0
+* Gradle 8.11.+
 * render.com webservice
 * UptimeRobot webservice monitoring
 
@@ -28,22 +28,6 @@ APP_SERVICE_MYSQL_PASSWORD=..........
 APP_SERVICE_TEST_ENDPOINT=...
 ```
 
-### API documentation
-
-Project uses OpenAPI (link: https://springdoc.org/)
-
-Configuration api documentation endpoint in *.yaml file
-
-```
-springdoc:
-  swagger-ui:
-    path: /api/documentation
-```
-
-API documentation endpoint:  <br>
-
-* http://{URL}:{port}/api/documentation
-
 ### Java code style
 
 Java code style refers to the conventions and guidelines that developers follow when writing Java code to ensure
@@ -51,36 +35,6 @@ consistency and readability.
 
 project: google-java-format,
 link: https://github.com/google/google-java-format/blob/master/README.md#intellij-jre-config
-
-### Github
-
-#### Git
-
-configuration
-
-```
-git config --global core.autocrlf true
-```
-
-#### Github action
-
-issue:  ./gradlew: Permission denied
-link: https://stackoverflow.com/questions/17668265/gradlew-permission-denied
-
-You need to update the execution permission for gradlew
-
-1. add action workflow
-
-2. locally pull changes
-
-3. run Git command:
-
-```
-git update-index --chmod=+x gradlew
-git add .
-git commit -m "Changing permission of gradlew"
-git push
-```
 
 ### Spring boot
 
@@ -144,117 +98,4 @@ Restarting deploy to update network configuration...
 process.env.PORT
 
 const port = process.env.PORT || 4000;
-```
-
-### Gradle
-
-#### Gradle Versions Plugin
-
-Displays a report of the project dependencies that are up-to-date, exceed the latest version found, have upgrades, or
-failed to be resolved, info: https://github.com/ben-manes/gradle-versions-plugin
-
-command:
-
-```
-gradle dependencyUpdates
-```
-
-#### Gradle wrapper
-
-Gradle Wrapper Reference:
-https://docs.gradle.org/current/userguide/gradle_wrapper.html
-
-How to Upgrade Gradle Wrapper:
-https://dev.to/pfilaretov42/tiny-how-to-upgrade-gradle-wrapper-3obl
-
-```
-./gradlew wrapper --gradle-version latest
-```
-
-#### Replace token and git-version plugin
-
-add import to build.gradle
-
-```
-import org.apache.tools.ant.filters.ReplaceTokens
-
-plugins {
-    .....
-    id "com.palantir.git-version" version "3.1.0"
-}
-
-processResources {
-    filter(ReplaceTokens, tokens:[appVersion: gitVersion()])
-}
-
-tasks.register('showVersion') {
-    doLast {
-        println "\nCurrent version: ${gitVersion()}\n"
-
-        def details = versionDetails()
-        println "last tag          : ${details.lastTag}"
-        println "commit distance   : ${details.commitDistance}"
-        println "hash              : ${details.gitHash}"
-        println "branch name       : ${details.branchName}"
-        println "is clean tag      : ${details.isCleanTag}"
-    }
-}
-```
-
-add placeholder to application.yaml file
-
-```
-application:
-  version: @appVersion@
-
-spring:
-  data:
-    jpa:
-      repositories:
-        enabled: true
-```
-
-create rest controller with property:
-
-```
-@RequestMapping("/api/v1")
-public class AppInfoRestController {
-
-    @Value("${application.version}")
-    private String gitVersion;
-```
-
-##### Gradle: build version task
-
-Allow BuildProperties bean to be used to get project info: version, name, time and group
-
-```
-springBoot {
-    buildInfo()
-}
-```
-
-create new rest controller:
-
-```
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("/api/v1")
-public class AppInfoRestController {
-
-    /**
-     * Provide build-related information such as group and artifact:
-     * "name" -  name of the project
-     * "time" -  timestamp of the build
-     * "version" - version of the project
-     * "group" - groupId
-     * "artifact" - artifactId of the project
-     */
-    private final BuildProperties buildProperties;
-
-    @GetMapping("/info")
-    public ResponseEntity<BuildProperties> appInfo() {
-        return ResponseEntity.ok(buildProperties);
-    }
-}
 ```
