@@ -18,7 +18,7 @@ public class FileRestController {
 
     private final String attachmentHeader;
 
-    private FileRestController(@Value("${tests.performance.endpoint}") String endpoint) {
+    public FileRestController(@Value("${tests.performance.endpoint}") String endpoint) {
         this.attachmentHeader = ATTACHMENT_HEADER_FORMATTER.formatted(endpoint);
         this.fileContent = endpoint;
     }

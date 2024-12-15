@@ -1,5 +1,8 @@
 ### Gradle
 
+Gradle is a build automation tool for multi-language software development.
+It controls the development process in the tasks of compilation and packaging to testing, deployment, and publishing
+
 #### Gradle Versions Plugin
 
 Displays a report of the project dependencies that are up-to-date, exceed the latest version found, have upgrades, or

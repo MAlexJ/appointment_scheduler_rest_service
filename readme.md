@@ -26,6 +26,9 @@ APP_SERVICE_MYSQL_USERNAME=......
 APP_SERVICE_MYSQL_PASSWORD=..........
 
 APP_SERVICE_TEST_ENDPOINT=...
+
+// docker compou
+APP_SERVICE_MYSQL_ROOT_PASSWORD=...
 ```
 
 ### Java code style
@@ -81,21 +84,3 @@ Table of Contents
 * Utility Statements
 
 link: https://dev.mysql.com/doc/refman/8.4/en/sql-statements.html
-
-### Render
-
-#### configuration: server port
-
-The default value of PORT is 10000 for all Render web services.
-You can override this value by setting the environment variable for your service in the Render Dashboard.
-
-```
-issue: 
-New primary port detected: 10000. 
-Restarting deploy to update network configuration...
-==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
-
-process.env.PORT
-
-const port = process.env.PORT || 4000;
-```
